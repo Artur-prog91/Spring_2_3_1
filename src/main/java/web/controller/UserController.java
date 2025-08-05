@@ -16,34 +16,34 @@ import web.service.UserService;
 public class UserController {
 
     private final UserService userService;
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public String listUsers(Model model) {
+    public String showListUsers(Model model) {
         model.addAttribute("user", userService.getUser());
         return "list";
     }
 
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String showNewUserForm(Model model) {
         model.addAttribute("user", new User());
         return "add";
     }
 
     @PostMapping("/add")
-    public String addUser(@RequestParam ("name") String name,
-                          @RequestParam ("surname") String surname,
-                          @RequestParam ("age") int age) {
-        User user = new User(name, surname, age);
-        userService.saveUser(user);
+    public String createUser(@RequestParam ("name") String name,
+                             @RequestParam ("surname") String surname,
+                             @RequestParam ("age") int age) {
+        userService.saveUser(name, surname, age);
         return "redirect:/users";
     }
 
     @GetMapping("/edit")
-    public String editUser(@RequestParam ("id") Long id, Model model) {
+    public String showEditUserForm(@RequestParam ("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         return "update";
     }

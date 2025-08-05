@@ -10,7 +10,7 @@ public interface UserService {
 
      List<User> getUser();
 
-     void saveUser(User user);
+     void saveUser(String name, String surname, int age);
 
      void updateUser(Long id, String name, String surname, int age);
 

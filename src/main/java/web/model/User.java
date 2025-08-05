@@ -4,19 +4,19 @@ package web.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "Surname", nullable = false, length = 50)
+    @Column(name = "surname", nullable = false, length = 50)
     private String surname;
 
-    @Column(name = "Age", nullable = false)
+    @Column(name = "age", nullable = false)
     private int age;
 
     public User() {

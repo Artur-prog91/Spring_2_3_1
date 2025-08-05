@@ -30,13 +30,18 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(String name, String surname, int age) {
+        User user = new User(name, surname, age);
         userDao.saveUser(user);
     }
 
     @Override
     public void updateUser(Long id, String name, String surname, int age) {
-        userDao.updateUser(id, name, surname, age);
+        User user = findById(id);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setAge(age);
+        userDao.updateUser(user);
     }
 
     @Override
